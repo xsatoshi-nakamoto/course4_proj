@@ -28,7 +28,8 @@ class Dev(Configuration):
 
   # SECURITY WARNING: don't run with debug turned on in production!
   DEBUG = True
-  OMDB_KEY = values.SecretValue()
+  OMDB_KEY = "377f1a8d" 
+  # OMDB_KEY = values.SecretValue()
 
   ALLOWED_HOSTS = values.ListValue(["localhost", "0.0.0.0", ".codio.io", os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io'])
   X_FRAME_OPTIONS = "ALLOW-FROM " + os.environ.get("CODIO_HOSTNAME") + "-8000.codio.io"
@@ -38,7 +39,8 @@ class Dev(Configuration):
   SESSION_COOKIE_SECURE = True
   CSRF_COOKIE_SAMESITE = "None"
   SESSION_COOKIE_SAMESITE = "None"
-
+  CELERY_RESULT_BACKEND = "django-db"
+  CELERY_BROKER_URL = "redis://localhost:6379/0"
 
   # Application definition
 
@@ -52,6 +54,7 @@ class Dev(Configuration):
       'debug_toolbar',
       'movies',
       'gh',
+      'django_celery_results',
   ]
 
   MIDDLEWARE = [

@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+import gh.views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("", gh.views.index),
 ]
 
 if settings.DEBUG:

@@ -50,7 +50,8 @@ class Dev(Configuration):
       'django.contrib.messages',
       'django.contrib.staticfiles',
       'debug_toolbar',
-      'movies'
+      'movies',
+      'gh',
   ]
 
   MIDDLEWARE = [
